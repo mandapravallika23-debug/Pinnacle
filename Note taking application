@@ -1,0 +1,160 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM5Ig3bvcQOb8+ACZMCHl4r",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/mandapravallika23-debug/Pinnacle/blob/main/Note%20taking%20application\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "C0ZkMHpS87Sp",
+        "outputId": "2b78b90c-bbaa-4fdd-97b0-b6f817d1f653"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Writing NoteTakingApp.java\n"
+          ]
+        }
+      ],
+      "source": [
+        "%%writefile NoteTakingApp.java\n",
+        "\n",
+        "import java.util.ArrayList;\n",
+        "import java.util.Scanner;\n",
+        "\n",
+        "public class NoteTakingApp {\n",
+        "    public static void main(String[] args) {\n",
+        "\n",
+        "        Scanner sc = new Scanner(System.in);\n",
+        "        ArrayList<String> notes = new ArrayList<>();\n",
+        "\n",
+        "        int choice;\n",
+        "\n",
+        "        do {\n",
+        "            System.out.println(\"\\n===== Note Taking Application =====\");\n",
+        "            System.out.println(\"1. Add Note\");\n",
+        "            System.out.println(\"2. View Notes\");\n",
+        "            System.out.println(\"3. Exit\");\n",
+        "            System.out.print(\"Enter your choice: \");\n",
+        "\n",
+        "            choice = sc.nextInt();\n",
+        "            sc.nextLine();\n",
+        "\n",
+        "            switch(choice) {\n",
+        "                case 1:\n",
+        "                    System.out.print(\"Enter note: \");\n",
+        "                    String note = sc.nextLine();\n",
+        "                    notes.add(note);\n",
+        "                    System.out.println(\"Note added successfully!\");\n",
+        "                    break;\n",
+        "\n",
+        "                case 2:\n",
+        "                    System.out.println(\"\\nYour Notes:\");\n",
+        "                    if(notes.isEmpty()) {\n",
+        "                        System.out.println(\"No notes available.\");\n",
+        "                    } else {\n",
+        "                        for(int i = 0; i < notes.size(); i++) {\n",
+        "                            System.out.println((i + 1) + \". \" + notes.get(i));\n",
+        "                        }\n",
+        "                    }\n",
+        "                    break;\n",
+        "\n",
+        "                case 3:\n",
+        "                    System.out.println(\"Thank you for using Note Taking Application!\");\n",
+        "                    break;\n",
+        "\n",
+        "                default:\n",
+        "                    System.out.println(\"Invalid choice!\");\n",
+        "            }\n",
+        "\n",
+        "        } while(choice != 3);\n",
+        "\n",
+        "        sc.close();\n",
+        "    }\n",
+        "}"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!javac NoteTakingApp.java"
+      ],
+      "metadata": {
+        "id": "RA6zzXLM_Xxj"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!printf \"1\\nLearn Java\\n2\\n3\\n\" | java NoteTakingApp"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_xANCXD9_kFy",
+        "outputId": "f7c7959e-a9bc-4aa6-d508-817bca3d5b16"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "===== Note Taking Application =====\n",
+            "1. Add Note\n",
+            "2. View Notes\n",
+            "3. Exit\n",
+            "Enter your choice: Enter note: Note added successfully!\n",
+            "\n",
+            "===== Note Taking Application =====\n",
+            "1. Add Note\n",
+            "2. View Notes\n",
+            "3. Exit\n",
+            "Enter your choice: \n",
+            "Your Notes:\n",
+            "1. Learn Java\n",
+            "\n",
+            "===== Note Taking Application =====\n",
+            "1. Add Note\n",
+            "2. View Notes\n",
+            "3. Exit\n",
+            "Enter your choice: Thank you for using Note Taking Application!\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
